@@ -6,14 +6,14 @@ data class Task(val taskId: TaskId,
                 val client: Client,
                 val project: Project) {
 
-//    var worklogs = mutableListOf<WorkDay>()
+//    var days = mutableListOf<WorkDay>()
 
 //    fun addWorklog(date: LocalDate, duration: Duration) {
 //        addWorklog(WorkDay(date, duration))
 //    }
 //
 //    fun addWorklog(worklog: WorkDay) {
-//        worklogs.add(worklog)
+//        days.add(worklog)
 //    }
 //
 //    fun removeWorklog(date: LocalDate) {
@@ -24,7 +24,7 @@ data class Task(val taskId: TaskId,
 //        // TODO:
 //    }
 
-//    fun worklogs(): List<WorkDay> {
+//    fun days(): List<WorkDay> {
 //        return mutableListOf()
 //    }
 }
