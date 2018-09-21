@@ -7,10 +7,10 @@ import one.valuelogic.trackingvalue.model.Task
 import java.time.Duration
 import java.time.LocalDate
 
-class TaskApplicationService(val taskRepository: TaskRepository,
-                             val contractorRepository: ContractorRepository,
-                             val clientRepository: ClientRepository,
-                             val projectRepository: ProjectRepository) {
+class TaskUseCase(val taskRepository: TaskRepository,
+                  val contractorRepository: ContractorRepository,
+                  val clientRepository: ClientRepository,
+                  val projectRepository: ProjectRepository) {
 
     interface TaskRepository {
         fun add(task: Task)
