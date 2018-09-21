@@ -4,8 +4,6 @@ import one.valuelogic.trackingvalue.model.Client
 import one.valuelogic.trackingvalue.model.Contractor
 import one.valuelogic.trackingvalue.model.Project
 import one.valuelogic.trackingvalue.model.Task
-import java.time.Duration
-import java.time.LocalDate
 
 class TaskUseCase(val taskRepository: TaskRepository,
                   val contractorRepository: ContractorRepository,
@@ -37,17 +35,12 @@ class TaskUseCase(val taskRepository: TaskRepository,
     fun createTask(contractorId: String,
                    clientName: String,
                    projectName: String,
-                   description: String,
-                   worklogs: List<Pair<LocalDate, Duration>>) {
+                   description: String) {
 
         val contractor = contractorRepository.findById(contractorId)
         val client = clientRepository.findById(clientName)
         val project = projectRepository.findById(projectName)
         val task = Task(description, contractor, client, project)
-
-        worklogs.forEach {
-            // task.addWorklog(it.first, it.second)
-        }
 
         taskRepository.add(task)
     }
