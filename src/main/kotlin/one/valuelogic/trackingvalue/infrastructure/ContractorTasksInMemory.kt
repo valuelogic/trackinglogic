@@ -6,11 +6,11 @@ import one.valuelogic.trackingvalue.model.TaskRepository
 
 class ContractorTasksInMemory : TaskRepository {
 
-    var tasks = mutableListOf<Task>()
+    var tasks = mutableMapOf<TaskId, Task>()
     var nextId = 1
 
     override fun add(task: Task) {
-        tasks.add(task)
+        tasks.put(task.taskId, task)
     }
 
     override fun nextId(): TaskId {
@@ -18,6 +18,10 @@ class ContractorTasksInMemory : TaskRepository {
     }
 
     fun allTasks(): List<Task> {
-        return tasks.toList()
+        return tasks.values.toList()
+    }
+
+    override fun findById(taskId: TaskId): Task? {
+        return tasks[taskId]
     }
 }
