@@ -1,8 +1,6 @@
 package one.valuelogic.trackingvalue
 
 import one.valuelogic.trackingvalue.model.*
-import java.time.Duration
-import java.time.LocalDate
 
 class TaskUseCase(val taskRepository: TaskRepository,
                   val contractorRepository: ContractorRepository,

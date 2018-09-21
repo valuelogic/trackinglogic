@@ -1,5 +1,5 @@
 package one.valuelogic.trackingvalue.model
 
-data class Client(val name: String) {
+data class Client(val clientId: ClientId, val name: String) {
 
 }
