@@ -18,7 +18,7 @@ internal class WhenCreatingTask {
 
         val contractor = Contractor("adamd")
         val client = Client(ClientId("retarus"), "retarus")
-        val project = Project("tax")
+        val project = Project("PROJECT_ID","tax", ClientId("123123"))
 
         every {
             contractorRepository.findById("adamd")
