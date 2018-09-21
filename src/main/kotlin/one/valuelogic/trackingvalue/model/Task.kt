@@ -2,13 +2,13 @@ package one.valuelogic.trackingvalue.model
 
 data class Task(val name: String, val contractor: Contractor, val client: Client, val project: Project) {
 
-//    var worklogs = mutableListOf<Worklog>()
+//    var worklogs = mutableListOf<WorkDay>()
 
 //    fun addWorklog(date: LocalDate, duration: Duration) {
-//        addWorklog(Worklog(date, duration))
+//        addWorklog(WorkDay(date, duration))
 //    }
 //
-//    fun addWorklog(worklog: Worklog) {
+//    fun addWorklog(worklog: WorkDay) {
 //        worklogs.add(worklog)
 //    }
 //
@@ -20,7 +20,7 @@ data class Task(val name: String, val contractor: Contractor, val client: Client
 //        // TODO:
 //    }
 
-//    fun worklogs(): List<Worklog> {
+//    fun worklogs(): List<WorkDay> {
 //        return mutableListOf()
 //    }
 }
