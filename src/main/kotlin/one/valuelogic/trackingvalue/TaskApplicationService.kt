@@ -7,8 +7,10 @@ import one.valuelogic.trackingvalue.model.Task
 import java.time.Duration
 import java.time.LocalDate
 
-class TaskApplicationService(val taskRepository: TaskRepository, val contractorRepository: ContractorRepository,
-                             val clientRepository: ClientRepository, val projectRepository: ProjectRepository) {
+class TaskApplicationService(val taskRepository: TaskRepository,
+                             val contractorRepository: ContractorRepository,
+                             val clientRepository: ClientRepository,
+                             val projectRepository: ProjectRepository) {
 
     interface TaskRepository {
         fun add(task: Task)
@@ -28,6 +30,10 @@ class TaskApplicationService(val taskRepository: TaskRepository, val contractorR
         fun findById(id: String): Project
     }
 
+    interface CBCRepository {
+        fun current(): CBCRepository
+    }
+
     fun createTask(contractorId: String,
                    clientName: String,
                    projectName: String,
@@ -40,7 +46,7 @@ class TaskApplicationService(val taskRepository: TaskRepository, val contractorR
         val task = Task(description, contractor, client, project)
 
         worklogs.forEach {
-            task.addWorklog(it.first, it.second)
+            // task.addWorklog(it.first, it.second)
         }
 
         taskRepository.add(task)
