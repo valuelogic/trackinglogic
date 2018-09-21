@@ -1,6 +1,10 @@
 package one.valuelogic.trackingvalue.model
 
-data class Task(val name: String, val contractor: Contractor, val client: Client, val project: Project) {
+data class Task(val taskId: TaskId,
+                val name: String,
+                val contractor: Contractor,
+                val client: Client,
+                val project: Project) {
 
 //    var worklogs = mutableListOf<WorkDay>()
 

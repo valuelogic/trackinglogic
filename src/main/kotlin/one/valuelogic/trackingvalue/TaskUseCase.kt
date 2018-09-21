@@ -2,10 +2,10 @@ package one.valuelogic.trackingvalue
 
 import one.valuelogic.trackingvalue.model.*
 
-class TaskUseCase(val taskRepository: TaskRepository,
-                  val contractorRepository: ContractorRepository,
-                  val clientRepository: ClientRepository,
-                  val projectRepository: ProjectRepository) {
+class TaskUseCase(private val taskRepository: TaskRepository,
+                  private val contractorRepository: ContractorRepository,
+                  private val clientRepository: ClientRepository,
+                  private val projectRepository: ProjectRepository) {
 
 
     fun createTask(contractorId: String,
@@ -13,10 +13,12 @@ class TaskUseCase(val taskRepository: TaskRepository,
                    projectName: String,
                    description: String) {
 
+        val taskId = taskRepository.nextId()
+
         val contractor = contractorRepository.findById(contractorId)
         val client = clientRepository.findById(clientName)
         val project = projectRepository.findById(projectName)
-        val task = Task(description, contractor, client, project)
+        val task = Task(taskId, description, contractor, client, project)
 
         taskRepository.add(task)
     }

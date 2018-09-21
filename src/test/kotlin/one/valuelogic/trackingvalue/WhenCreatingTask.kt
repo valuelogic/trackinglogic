@@ -36,7 +36,7 @@ internal class WhenCreatingTask {
 
         val allTasks = taskRepository.allTasks()
 
-        assertIterableEquals(listOf(Task("frontend", contractor, client, project)), allTasks)
+        assertIterableEquals(listOf(Task(TaskId(1), "frontend", contractor, client, project)), allTasks)
     }
 
 }
