@@ -1,5 +1,7 @@
 package one.valuelogic.trackingvalue.model
 
-data class Project(val name: String) {
+typealias ProjectId = String
+
+data class Project(val projectId: ProjectId, val name: String, val clientId: ClientId) {
 
 }

@@ -7,12 +7,14 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testImplementation(
-            'org.junit.jupiter:junit-jupiter-api:5.1.0'
+            'org.junit.jupiter:junit-jupiter-api:5.1.0',
+            'org.amshove.kluent:kluent:1.41'
     )
     testImplementation "io.mockk:mockk:1.8.7"
     testRuntimeOnly(
