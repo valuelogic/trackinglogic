@@ -17,22 +17,22 @@ internal class WhenCreatingTask {
         val projectRepository = mockk<ProjectRepository>()
 
         val contractor = Contractor("adamd")
-        val client = Client(ClientId("retarus"), "retarus")
-        val project = Project("PROJECT_ID","tax", ClientId("123123"))
+        val client = Client(ClientId("client1"), "client1")
+        val project = Project("PROJECT_ID","xxx", ClientId("123123"))
 
         every {
             contractorRepository.findById("adamd")
         } returns contractor
         every {
-            clientRepository.findById("retarus")
+            clientRepository.findById("client1")
         } returns client
         every {
-            projectRepository.findById("tax")
+            projectRepository.findById("xxx")
         } returns project
 
         val useCase = TaskUseCase(taskRepository, contractorRepository, clientRepository, projectRepository)
 
-        useCase.createTask("adamd", "retarus", "tax", "frontend")
+        useCase.createTask("adamd", "client1", "xxx", "frontend")
 
         val allTasks = taskRepository.allTasks()
 
