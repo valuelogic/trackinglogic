@@ -27,7 +27,7 @@ class BillingCycle(val contractorId: String, val month: YearMonth) {
         }
 
         days.forEach {
-            day, worklogs -> worklogs.map {
+            _, worklogs -> worklogs.map {
                 it ->
                     if (it.task != oldTask) {
                         it
@@ -43,15 +43,28 @@ class BillingCycle(val contractorId: String, val month: YearMonth) {
             throw RuntimeException("a")
         }
 
-        days.computeIfPresent(dayOfMonth, {
-            day, worklogs ->
+        days.computeIfPresent(dayOfMonth) {
+            _, worklogs ->
             worklogs.map {
                 worklog -> if (worklog.task == task) {
                     Worklog(worklog.task, duration)
                 } else {
                     worklog
                 }}
-        })
+        }
+    }
+
+    fun removeTask(dayOfMonth: Int, task: Task) {
+        if (!isPresent(dayOfMonth, task)) {
+            throw RuntimeException("a")
+        }
+
+        days.computeIfPresent(dayOfMonth) {
+            _, worklogs ->
+                worklogs.filter { it ->
+                    it.task != task
+                }
+            }
     }
 
     private fun isPresent(dayOfMonth: Int, task: Task): Boolean {
@@ -67,10 +80,6 @@ class BillingCycle(val contractorId: String, val month: YearMonth) {
                 it -> it.task == task
             }
         }.isEmpty()
-    }
-
-    fun removeTask() {
-
     }
 
     fun confirm(): Unit {
